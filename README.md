@@ -19,21 +19,20 @@ The MVC methodology separates an application's logic into three distinct layers:
 
 --- Autoload in PHP (use class which is in another directory and file, from file in another directory):
 
-To autoload class in php follow below steps:
-1- In terminal run composer init
-2- Edit created composer.json as below or change the parameters in 1 step:
-"autoload": {
-"psr-4": {
-"app\\": "./"
-}
-}
+To autoload class in php follow below steps:\
+1- In terminal run composer init\
+2- Edit created composer.json as below or change the parameters in 1 step:\
+"autoload": {\
+"psr-4": {\
+"app\\": "./"\  
+}\
+}\
 
-_- Which "app\\" is the name that we can use in our code like "use app\Controller\ProductController".
-_- And "./" is the directory of your classes file and etc.
-
-3(optional - if you edited composer.json)- Then run composer update.
-4- In your class file('root(app)/Controller/ProductController.php') add this line: namespace app\Controller.
-5- In the file('root(app)/View/product/index.php') which your gonna use this class add this lines:
-_- require_once '../../vendor/autoload.php';
-_- use app\Controller\ProductController;
-6- Then you can access to class and its methods by calling related item like: ProductController::store($product).
+- Which "app\\" is the name that we can use in our code like "use app\Controller\ProductController".\
+- And "./" is the directory of your classes file and etc.\
+  3(optional - if you edited composer.json)- Then run composer update.\  
+  4- In your class file('root(app)/Controller/ProductController.php') add this line: namespace app\Controller.\
+  5- In the file('root(app)/View/product/index.php') which your gonna use this class add this lines:\
+- require_once '../../vendor/autoload.php'.\
+- use app\Controller\ProductController.\
+  6- Then you can access to class and its methods by calling related item like: ProductController::store($product).\
