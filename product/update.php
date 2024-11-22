@@ -1,19 +1,9 @@
+<?php @require_once("../inc/header.php"); ?>
+
 <?php
 
 $productID = $_GET['id'];
 
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "2025_product_crud";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = $_POST['title'];
@@ -34,9 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 ?>
 
-
-<?php @require_once("../inc/header.php"); ?>
-
 <?php
 
 $sql = "SELECT * FROM product WHERE id='$productID'";
@@ -51,7 +38,7 @@ $product = mysqli_fetch_all($result, MYSQLI_ASSOC);
     <form action="<?php echo $_SERVER['PHP_SELF'] . '?id=' . $_GET['id']; ?>" method="POST">
         <div class="mb-3">
             <label for="title" class="form-label">Product Title</label>
-            <input type="text" class="form-control" id="title" name="title" aria-describedby="title" value="<?php echo $product['0']['title'] ?>">
+            <input type="text" class="form-control" id="title" name="title" aria-describedby="title" value="<?php echo $product['0']['title'] ?? '' ?>">
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Product Description</label>

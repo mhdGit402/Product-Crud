@@ -1,24 +1,12 @@
+<?php @require_once("inc/header.php"); ?>
+
 <?php
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "2025_product_crud";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
 $sql = "SELECT * FROM product";
 $result = $conn->query($sql);
 $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 ?>
-
-<?php @require_once("inc/header.php"); ?>
 
 <?php if (!empty($_GET)) : ?>
     <?php if (!empty($_REQUEST['code']) && !empty($_REQUEST['msg'])): ?>

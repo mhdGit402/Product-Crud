@@ -1,16 +1,6 @@
+<?php @require_once("../inc/header.php"); ?>
+
 <?php
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "2025_product_crud";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = $_POST['title'];
@@ -30,9 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 ?>
-
-<?php @require_once("../inc/header.php"); ?>
-
 
 <div class="container">
     <h2>Add new product</h2>
