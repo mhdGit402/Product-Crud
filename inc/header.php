@@ -1,4 +1,3 @@
-<?php require_once("db.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,4 +11,4 @@
 
 <body>
 
-    <a href="/2025/PHP/Product-Crud/">Home</a>
+    <a href="/2025/PHP/Product-Crud/resources/">Home</a>

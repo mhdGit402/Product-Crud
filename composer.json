@@ -1,0 +1,15 @@
+{
+  "name": "mahdi/product-crud",
+  "autoload": {
+    "psr-4": {
+      "app\\": "./"
+    }
+  },
+  "authors": [
+    {
+      "name": "mhdGit402",
+      "email": "mahdira401@gmail.com"
+    }
+  ],
+  "require": {}
+}

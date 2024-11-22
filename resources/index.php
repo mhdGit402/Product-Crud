@@ -1,10 +1,12 @@
-<?php @require_once("inc/header.php"); ?>
-
 <?php
 
-$sql = "SELECT * FROM product";
-$result = $conn->query($sql);
-$products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+require_once("../inc/header.php");
+require_once '../vendor/autoload.php';
+
+use app\Controller\ProductController;
+
+// Controller->ProductController->index();
+$products = ProductController::index();
 
 ?>
 
@@ -19,9 +21,9 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 <?php if (!empty($_GET)) {
     if (!empty($_REQUEST['search'])) {
-        $sql = "SELECT * FROM product where title like '%" . $_REQUEST['search'] . "%'";
-        $result = $conn->query($sql);
-        $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        // Controller->ProductController->show();
+        $query = "where title like '%" . $_REQUEST['search'] . "%'";
+        $products = ProductController::show($query);
     }
 }
 ?>
@@ -29,7 +31,7 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <div class="container">
     <div class="header">
         <h2>Product List</h2>
-        <a href="product/"><button type="button" class="btn btn-primary">Create Product</button></a>
+        <a href="../view/product/"><button type="button" class="btn btn-primary">Create Product</button></a>
         <form id="form-search" action="<?php echo $_SERVER['PHP_SELF'] ?>">
             <div class="input-group mb-3">
                 <input type="text" name="search" id="search" class="form-control" placeholder="Search Product" aria-label="Search Product" aria-describedby="button-addon2">
@@ -56,10 +58,10 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
                         <td><?php echo $product['price'] ?></td>
                         <td><?php echo $product['created'] ?></td>
                         <td>
-                            <a href="product/update.php/?id=<?php echo $product['id'] ?>">
+                            <a href="../View/product/update.php/?id=<?php echo $product['id'] ?>">
                                 <button type="button" class="btn btn-outline-primary">Edit</button>
                             </a>
-                            <a href="product/delete.php/?id=<?php echo $product['id'] ?>">
+                            <a href="../View/product/delete.php/?id=<?php echo $product['id'] ?>">
                                 <button type="button" class="btn btn-outline-danger">Delete</button>
                             </a>
                         </td>
@@ -71,4 +73,4 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 </div>
 
 
-<?php @require_once("inc/footer.php"); ?>
+<?php require_once("../inc/footer.php"); ?>

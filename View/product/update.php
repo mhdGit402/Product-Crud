@@ -1,40 +1,27 @@
-<?php @require_once("../inc/header.php"); ?>
-
 <?php
+require_once("../../inc/header.php");
+require_once '../../vendor/autoload.php';
 
-$productID = $_GET['id'];
+use app\Controller\ProductController;
 
+$query = "WHERE id='" . $_GET['id'] . "'";
+$product = ProductController::show($query);
 
+// Controller->ProductController->update();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $price = $_POST['price'];
-
-    $sql = "UPDATE product set title='$title', description='$description', price=$price WHERE id='$productID'";
-
-    $result = $conn->query($sql);
-
-    if ($result) {
-        header('Location: /2025/PHP/Product-Crud');
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;;
-    }
+    $data = [
+        "id" => $_GET['id'],
+        "title" => $_POST['title'],
+        "description" => $_POST['description'],
+        "price" => $_POST['price']
+    ];
+    ProductController::update($data);
 }
 
-
 ?>
-
-<?php
-
-$sql = "SELECT * FROM product WHERE id='$productID'";
-$result = $conn->query($sql);
-$product = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-?>
-
 
 <div class="container">
-    <h2>Edit product <?php echo $productID; ?></h2>
+    <h2>Edit product <?php echo $_GET['id']; ?></h2>
     <form action="<?php echo $_SERVER['PHP_SELF'] . '?id=' . $_GET['id']; ?>" method="POST">
         <div class="mb-3">
             <label for="title" class="form-label">Product Title</label>
@@ -52,4 +39,4 @@ $product = mysqli_fetch_all($result, MYSQLI_ASSOC);
     </form>
 </div>
 
-<?php @require_once("../inc/footer.php"); ?>
+<?php require_once("../../inc/footer.php"); ?>

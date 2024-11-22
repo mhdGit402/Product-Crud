@@ -1,23 +1,17 @@
-<?php @require_once("../inc/header.php"); ?>
-
 <?php
+require_once("../../inc/header.php");
+require_once '../../vendor/autoload.php';
 
+use app\Controller\ProductController;
+// Controller->ProductController->store();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $price = $_POST['price'];
-
-
-    $sql = "INSERT INTO product (title, description, price) VALUES ('$title','$description',$price)";
-    $result = $conn->query($sql);
-
-    if ($result) {
-        header('Location: /2025/PHP/Product-Crud');
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;;
-    }
+    $product = [
+        "title" => $_POST['title'],
+        "description" => $_POST['description'],
+        "price" => $_POST['price']
+    ];
+    ProductController::store($product);
 }
-
 
 ?>
 
@@ -40,4 +34,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </form>
 </div>
 
-<?php @require_once("../inc/footer.php"); ?>
+<?php @require_once("../../inc/footer.php"); ?>
