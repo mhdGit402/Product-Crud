@@ -21,7 +21,9 @@ The MVC methodology separates an application's logic into three distinct layers:
 
 To autoload class in php follow below steps:<br />
 1- In terminal run composer init<br />
+
 2- Edit created composer.json as below or change the parameters in 1 step:<br />
+
 "autoload": { <br />
 "psr-4": { <br />
 "app\\": "./" <br />  
