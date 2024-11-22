@@ -30,9 +30,14 @@ To autoload class in php follow below steps:<br />
 
 - Which "app\\" is the name that we can use in our code like "use app\Controller\ProductController". <br />
 - And "./" is the directory of your classes file and etc. <br />
-  3- (optional - if you edited composer.json) Then run composer update. <br />
-  4- In your class file('root(app)/Controller/ProductController.php') add this line: namespace app\Controller. <br />
-  5- In the file('root(app)/View/product/index.php') which your gonna use this class add this lines: <br />
+
+3- (optional - if you edited composer.json) Then run composer update. <br />
+
+4- In your class file('root(app)/Controller/ProductController.php') add this line: namespace app\Controller. <br />
+
+5- In the file('root(app)/View/product/index.php') which your gonna use this class add this lines: <br />
+
 - require_once '../../vendor/autoload.php'. <br />
 - use app\Controller\ProductController. <br />
-  6- Then you can access to class and its methods by calling related item like: ProductController::store($product).
+
+6- Then you can access to class and its methods by calling related item like: ProductController::store($product).
